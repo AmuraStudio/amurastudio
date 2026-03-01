@@ -749,8 +749,12 @@
   .lang-sep { color: var(--border2); font-size: 11px; }
 
   /* ── LANG CONTENT ── */
-  [data-lang] { display: none; }
-  [data-lang].active { display: block; }
+  [data-lang="en"] { display: none; }
+  [data-lang="es"] { display: block; }
+  [data-lang="en"].active { display: block; }
+  [data-lang="es"].active { display: block; }
+  [data-lang="es"]:not(.hidden) { display: block; }
+  [data-lang="en"].show { display: block; }
   [data-lang-inline] { display: none; }
   [data-lang-inline].active { display: inline; }
 
@@ -1280,10 +1284,14 @@
       btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
     });
 
-    // Update block elements
+    // Show/hide block elements
     document.querySelectorAll('[data-lang]').forEach(el => {
-      el.classList.toggle('active', el.dataset.lang === lang);
-      el.style.display = el.dataset.lang === lang ? '' : 'none';
+      if (el.dataset.lang === lang) {
+        el.style.display = '';
+        el.style.visibility = 'visible';
+      } else {
+        el.style.display = 'none';
+      }
     });
 
     // Update inline nav links
@@ -1292,9 +1300,13 @@
     });
   }
 
-  // Init display
+  // Init: show ES, hide EN
   document.querySelectorAll('[data-lang]').forEach(el => {
     el.style.display = el.dataset.lang === 'es' ? '' : 'none';
+  });
+  document.querySelectorAll('[data-lang-inline]').forEach(el => {
+    if (el.dataset['es']) el.textContent = el.dataset['es'];
+    el.style.display = 'inline';
   });
 
 
