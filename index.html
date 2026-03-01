@@ -749,14 +749,11 @@
   .lang-sep { color: var(--border2); font-size: 11px; }
 
   /* ── LANG CONTENT ── */
-  [data-lang="en"] { display: none; }
-  [data-lang="es"] { display: block; }
-  [data-lang="en"].active { display: block; }
-  [data-lang="es"].active { display: block; }
-  [data-lang="es"]:not(.hidden) { display: block; }
-  [data-lang="en"].show { display: block; }
-  [data-lang-inline] { display: none; }
-  [data-lang-inline].active { display: inline; }
+  [data-lang] { display: none; }
+  body.lang-es [data-lang="es"] { display: block; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-es [data-lang-inline] { display: inline; }
+  body.lang-en [data-lang-inline] { display: inline; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -792,7 +789,7 @@
   }
 </style>
 </head>
-<body>
+<body class="lang-es">
 
 <!-- NAV -->
 <nav>
@@ -1278,35 +1275,18 @@
 
   function setLang(lang) {
     currentLang = lang;
-
-    // Update buttons
+    document.body.className = document.body.className.replace(/lang-\w+/g, '').trim() + ' lang-' + lang;
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
     });
-
-    // Show/hide block elements
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      if (el.dataset.lang === lang) {
-        el.style.display = '';
-        el.style.visibility = 'visible';
-      } else {
-        el.style.display = 'none';
-      }
-    });
-
-    // Update inline nav links
     document.querySelectorAll('[data-lang-inline]').forEach(el => {
       if (el.dataset[lang]) el.textContent = el.dataset[lang];
     });
   }
 
-  // Init: show ES, hide EN
-  document.querySelectorAll('[data-lang]').forEach(el => {
-    el.style.display = el.dataset.lang === 'es' ? '' : 'none';
-  });
+  // Init nav inline elements
   document.querySelectorAll('[data-lang-inline]').forEach(el => {
     if (el.dataset['es']) el.textContent = el.dataset['es'];
-    el.style.display = 'inline';
   });
 
 
