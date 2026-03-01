@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amura Studio · Financial Craft & Venture Building</title>
+<meta name="description" content="Boutique de asesoramiento financiero estratégico y M&A para founders e inversores en el ecosistema tech europeo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #0f0f18;
+    --bg3: #13131e;
+    --surface: #16161f;
+    --surface2: #1c1c28;
+    --border: rgba(255,255,255,0.06);
+    --border2: rgba(255,255,255,0.12);
+    --accent: #4a9eff;
+    --accent2: #2d7dd2;
+    --gold: #c9a96e;
+    --gold2: #e8c88a;
+    --text: #e8e8f0;
+    --text2: #9898b0;
+    --text3: #5a5a72;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .logo-mark svg { width: 100%; height: 100%; }
+
+  .logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo-text {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .logo-text b {
+    font-weight: 500;
+  }
+
+  .logo-sub {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.18em;
+    color: var(--text3);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--text2);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--bg) !important;
+    background: var(--accent);
+    padding: 10px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent2) !important; color: var(--bg) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 140px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(ellipse, rgba(74,158,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    max-width: 900px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--text2);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 14px 32px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border2);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--text); border-color: var(--text2); }
+
+  .hero-metrics {
+    position: absolute;
+    bottom: 60px;
+    right: 48px;
+    display: flex;
+    gap: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .metric { text-align: right; }
+
+  .metric-value {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text3);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 120px 48px;
+    position: relative;
+  }
+
+  section + section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 48px; right: 48px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .intro-right {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .intro-quote {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.5;
+    border-left: 2px solid var(--gold);
+    padding-left: 28px;
+  }
+
+  .intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    border: 1px solid var(--border2);
+    padding: 6px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 64px;
+  }
+
+  .service-card {
+    background: var(--bg);
+    padding: 48px 40px;
+    position: relative;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--surface); }
+
+  .service-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text3);
+    margin-bottom: 24px;
+  }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+
+  .service-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .service-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .service-items li {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--text3);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .service-items li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ── HOW WE WORK ── */
+  .process {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 64px;
+    grid-column: 1 / -1;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .process-step:first-child { border-top: 1px solid var(--border); }
+
+  .step-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--border2);
+    line-height: 1;
+  }
+
+  .step-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  /* ── RESOURCES ── */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .resource-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 40px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .resource-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-4px);
+  }
+
+  .resource-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .resource-type::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+
+  .resource-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .resource-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .resource-cta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .resource-cta::after { content: '↓'; }
+
+  .resource-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--text3);
+    text-transform: uppercase;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    padding: 14px 18px;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-select {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-select option { background: var(--surface); }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-submit {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    padding: 16px 32px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover { background: var(--accent2); }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 8px;
+  }
+
+  .contact-item-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .contact-item-value {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--text);
+  }
+
+  .contact-item-value a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border2);
+    transition: border-color 0.2s;
+  }
+
+  .contact-item-value a:hover { border-color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text2); }
+
+  /* ── LANG SWITCHER ── */
+  .lang-switch {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .lang-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .lang-btn.active { color: var(--accent); }
+  .lang-btn:hover { color: var(--text2); }
+  .lang-sep { color: var(--border2); font-size: 11px; }
+
+  /* ── LANG CONTENT ── */
+  [data-lang] { display: none; }
+  [data-lang].active { display: block; }
+  [data-lang-inline] { display: none; }
+  [data-lang-inline].active { display: inline; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .hero { padding: 120px 24px 80px; }
+    .intro { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-step { grid-template-columns: 60px 1fr; }
+    .process-step > :last-child { grid-column: 2; }
+    .resources-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-metrics { position: static; margin-top: 48px; flex-wrap: wrap; gap: 32px; }
+    .footer { flex-direction: column; gap: 24px; text-align: center; }
+    section + section::before { left: 24px; right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="4" y1="36" x2="20" y2="8" stroke="#4a9eff" stroke-width="1.5"/>
+        <line x1="36" y1="36" x2="20" y2="8" stroke="#4a9eff" stroke-width="1.5" opacity="0.5"/>
+        <line x1="4" y1="36" x2="36" y2="36" stroke="#4a9eff" stroke-width="1.5" opacity="0.3"/>
+        <circle cx="20" cy="8" r="2.5" fill="#4a9eff"/>
+        <circle cx="4" cy="36" r="1.5" fill="#4a9eff" opacity="0.4"/>
+        <circle cx="36" cy="36" r="1.5" fill="#4a9eff" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="logo-wordmark">
+      <span class="logo-text"><b>amura</b>studio</span>
+      <span class="logo-sub">Financial Craft & Venture Building</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#nosotros" data-lang-inline data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="#servicios" data-lang-inline data-es="Servicios" data-en="Services">Servicios</a></li>
+    <li><a href="#proceso" data-lang-inline data-es="Proceso" data-en="Process">Proceso</a></li>
+    <li><a href="#recursos" data-lang-inline data-es="Recursos" data-en="Resources">Recursos</a></li>
+    <li><a href="#contacto" class="nav-cta" data-lang-inline data-es="Conversemos" data-en="Let's talk">Conversemos</a></li>
+    <li>
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">·</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-eyebrow">Financial Craft & Venture Building</div>
+
+  <h1 class="hero-title">
+    <span data-lang="es" class="active">Donde la <em>estrategia financiera</em> se convierte en valor real.</span>
+    <span data-lang="en">Where <em>financial strategy</em> becomes real value.</span>
+  </h1>
+
+  <p class="hero-sub">
+    <span data-lang="es" class="active">Boutique de asesoramiento para founders e inversores que navegan los momentos de inflexión en el ecosistema tech europeo.</span>
+    <span data-lang="en">Advisory boutique for founders and investors navigating inflection points in the European tech ecosystem.</span>
+  </p>
+
+  <div class="hero-actions">
+    <a href="#servicios" class="btn-primary">
+      <span data-lang="es" class="active">Ver servicios</span>
+      <span data-lang="en">Our services</span>
+    </a>
+    <a href="#contacto" class="btn-secondary">
+      <span data-lang="es" class="active">Hablar con nosotros →</span>
+      <span data-lang="en">Get in touch →</span>
+    </a>
+  </div>
+
+
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="intro reveal">
+    <div class="intro-left">
+      <div class="section-label">
+        <span data-lang="es" class="active">Sobre Amura Studio</span>
+        <span data-lang="en">About Amura Studio</span>
+      </div>
+      <h2 class="section-title">
+        <span data-lang="es" class="active">Dos mundos que <em>raramente</em> hablan el mismo idioma.</span>
+        <span data-lang="en">Two worlds that <em>rarely</em> speak the same language.</span>
+      </h2>
+      <p class="section-body">
+        <span data-lang="es" class="active">Los que construyen empresas tecnológicas y los que las financian o adquieren operan con lógicas distintas. Amura Studio existe en esa intersección: con experiencia operativa real dentro de compañías tech y experiencia transaccional como asesores de M&A e inversión.</span>
+        <span data-lang="en">Those who build technology companies and those who finance or acquire them operate with different logic. Amura Studio exists at that intersection: with genuine operating experience inside tech companies and transactional experience as M&A and investment advisors.</span>
+      </p>
+    </div>
+    <div class="intro-right">
+      <div class="intro-quote">
+        <span data-lang="es" class="active">"Hemos estado dentro de compañías navegando hipercrecimiento, presión de fundraising y pivotes estratégicos. Y hemos estado al otro lado asesorando en los deals que definen esos momentos."</span>
+        <span data-lang="en">"We've been inside companies navigating hypergrowth, fundraising pressure, and strategic pivots. And we've sat across the table advising on the deals that define those moments."</span>
+      </div>
+      <div class="intro-tags">
+        <span class="tag">Deep Tech</span>
+        <span class="tag">SaaS</span>
+        <span class="tag">Tech Services</span>
+        <span class="tag">M&A Advisory</span>
+        <span class="tag">Corporate Development</span>
+        <span class="tag">Series A → Exit</span>
+        <span class="tag">Europe</span>
+        <span class="tag">PE / VC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="reveal">
+    <div class="section-label">
+      <span data-lang="es" class="active">Lo que hacemos</span>
+      <span data-lang="en">What we do</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="es" class="active">Servicios <em>estratégicos</em></span>
+      <span data-lang="en"><em>Strategic</em> services</span>
+    </h2>
+    <p class="section-body">
+      <span data-lang="es" class="active">Trabajamos con un número reducido de compañías y fondos a la vez. Las personas con las que colaboramos reciben atención senior real, no un equipo de juniors.</span>
+      <span data-lang="en">We work with a small number of companies and funds at a time. The people we work with get genuine senior attention, not a team of juniors.</span>
+    </p>
+  </div>
+
+  <div class="services-grid reveal">
+
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M6 28V16l12-8 12 8v12"/><path d="M14 28v-8h8v8"/><circle cx="18" cy="12" r="2"/>
+      </svg>
+      <div class="service-name">
+        <span data-lang="es" class="active">CFO Estratégico Fractional</span>
+        <span data-lang="en">Fractional Strategic CFO</span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="es" class="active">Arquitectura financiera y operativa que maximiza el valor hacia una ronda de crecimiento, una adquisición o un exit.</span>
+        <span data-lang="en">Financial and operational architecture that maximises value towards a growth round, acquisition or exit.</span>
+      </div>
+      <ul class="service-items">
+        <li><span data-lang="es" class="active">Preparación para ronda Serie A/B</span><span data-lang="en">Series A/B fundraising preparation</span></li>
+        <li><span data-lang="es" class="active">Estructura de capital y dilución</span><span data-lang="en">Capital structure & dilution</span></li>
+        <li><span data-lang="es" class="active">Narrativa financiera para inversores</span><span data-lang="en">Investor financial narrative</span></li>
+        <li><span data-lang="es" class="active">Unit economics y métricas SaaS</span><span data-lang="en">Unit economics & SaaS metrics</span></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M18 4l14 8v12l-14 8L4 24V12z"/><path d="M18 4v28M4 12l14 8 14-8"/>
+      </svg>
+      <div class="service-name">
+        <span data-lang="es" class="active">Exit Readiness & M&A</span>
+        <span data-lang="en">Exit Readiness & M&A</span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="es" class="active">Preparación integral para transacciones: desde la arquitectura pre-deal hasta el cierre, en entornos VC y PE.</span>
+        <span data-lang="en">Comprehensive transaction preparation: from pre-deal architecture to closing, in VC and PE environments.</span>
+      </div>
+      <ul class="service-items">
+        <li><span data-lang="es" class="active">Due diligence financiero (buy/sell)</span><span data-lang="en">Financial due diligence (buy/sell)</span></li>
+        <li><span data-lang="es" class="active">Materiales de venta (IM, modelo)</span><span data-lang="en">Sales materials (IM, financial model)</span></li>
+        <li><span data-lang="es" class="active">Valoración y estructura del deal</span><span data-lang="en">Valuation & deal structure</span></li>
+        <li><span data-lang="es" class="active">Interlocución con compradores</span><span data-lang="en">Buyer/investor interface</span></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="18" cy="18" r="14"/><path d="M18 8v10l6 4"/>
+      </svg>
+      <div class="service-name">
+        <span data-lang="es" class="active">Corporate Development</span>
+        <span data-lang="en">Corporate Development</span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="es" class="active">Estrategia corporativa y desarrollo de negocio para compañías tech en fases de crecimiento e internacionalización.</span>
+        <span data-lang="en">Corporate strategy and business development for tech companies in growth and internationalisation phases.</span>
+      </div>
+      <ul class="service-items">
+        <li><span data-lang="es" class="active">Estrategia de crecimiento inorgánico</span><span data-lang="en">Inorganic growth strategy</span></li>
+        <li><span data-lang="es" class="active">Identificación y screening de targets</span><span data-lang="en">Target identification & screening</span></li>
+        <li><span data-lang="es" class="active">Alianzas estratégicas</span><span data-lang="en">Strategic partnerships</span></li>
+        <li><span data-lang="es" class="active">Expansión europea</span><span data-lang="en">European expansion</span></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">04</div>
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M4 18h28M18 4l14 14-14 14"/>
+      </svg>
+      <div class="service-name">
+        <span data-lang="es" class="active">Deal Sourcing para Fondos</span>
+        <span data-lang="en">Deal Sourcing for Funds</span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="es" class="active">Origination cualificada de deal flow para fondos de VC y PE con foco en el ecosistema tech europeo.</span>
+        <span data-lang="en">Qualified deal flow origination for VC and PE funds focused on the European tech ecosystem.</span>
+      </div>
+      <ul class="service-items">
+        <li><span data-lang="es" class="active">Identificación de oportunidades</span><span data-lang="en">Opportunity identification</span></li>
+        <li><span data-lang="es" class="active">Pre-screening operativo</span><span data-lang="en">Operational pre-screening</span></li>
+        <li><span data-lang="es" class="active">Acceso a founders y directivos</span><span data-lang="en">Access to founders & management</span></li>
+        <li><span data-lang="es" class="active">Deep tech · SaaS · Tech Services</span><span data-lang="en">Deep tech · SaaS · Tech Services</span></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">05</div>
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="4" y="4" width="12" height="12" rx="1"/><rect x="20" y="4" width="12" height="12" rx="1"/>
+        <rect x="4" y="20" width="12" height="12" rx="1"/><path d="M26 20v12M20 26h12"/>
+      </svg>
+      <div class="service-name">
+        <span data-lang="es" class="active">Operating Partnership</span>
+        <span data-lang="en">Operating Partnership</span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="es" class="active">Soporte operativo senior en compañías de portfolio — en momentos de transición, crecimiento acelerado o preparación para transacción.</span>
+        <span data-lang="en">Senior operational support in portfolio companies during transition, accelerated growth or transaction preparation.</span>
+      </div>
+      <ul class="service-items">
+        <li><span data-lang="es" class="active">Interim COO / CFO</span><span data-lang="en">Interim COO / CFO</span></li>
+        <li><span data-lang="es" class="active">Transformación operativa</span><span data-lang="en">Operational transformation</span></li>
+        <li><span data-lang="es" class="active">Construcción de equipo directivo</span><span data-lang="en">Management team building</span></li>
+        <li><span data-lang="es" class="active">Governance y reporting</span><span data-lang="en">Governance & reporting</span></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-number">06</div>
+      <svg class="service-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M18 4C10.3 4 4 10.3 4 18s6.3 14 14 14 14-6.3 14-14S25.7 4 18 4z"/>
+        <path d="M12 18h12M18 12v12"/>
+      </svg>
+      <div class="service-name">
+        <span data-lang="es" class="active">Venture Building</span>
+        <span data-lang="en">Venture Building</span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="es" class="active">Soporte a founders técnicos en la construcción de la arquitectura de negocio desde etapas tempranas — spinouts, deep tech y SaaS.</span>
+        <span data-lang="en">Support to technical founders in building the business architecture from early stages — spinouts, deep tech and SaaS.</span>
+      </div>
+      <ul class="service-items">
+        <li><span data-lang="es" class="active">Co-fundador de negocio</span><span data-lang="en">Business co-founder</span></li>
+        <li><span data-lang="es" class="active">Go-to-market y modelo de negocio</span><span data-lang="en">Go-to-market & business model</span></li>
+        <li><span data-lang="es" class="active">Preparación para primera ronda</span><span data-lang="en">First round preparation</span></li>
+        <li><span data-lang="es" class="active">Pitch y materiales de inversión</span><span data-lang="en">Pitch & investment materials</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="reveal">
+    <div class="section-label">
+      <span data-lang="es" class="active">Cómo trabajamos</span>
+      <span data-lang="en">How we work</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="es" class="active">Proceso <em>claro</em>, impacto real.</span>
+      <span data-lang="en"><em>Clear</em> process, real impact.</span>
+    </h2>
+  </div>
+
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-name"><span data-lang="es" class="active">Diagnóstico</span><span data-lang="en">Diagnosis</span></div>
+        <div class="step-desc"><span data-lang="es" class="active">3-4 semanas. Entregable concreto: mapa financiero, gaps identificados y roadmap de acción. Entrada de bajo riesgo que genera valor visible desde el primer día.</span><span data-lang="en">3-4 weeks. Concrete deliverable: financial map, identified gaps and action roadmap. Low-risk entry that generates visible value from day one.</span></div>
+      </div>
+      <div class="step-desc" style="color: var(--text3); font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; padding-top: 4px;">
+        <span data-lang="es" class="active">Alcance definido · Entregable concreto</span>
+        <span data-lang="en">Defined scope · Concrete deliverable</span>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-name"><span data-lang="es" class="active">Engagement Continuo</span><span data-lang="en">Ongoing Engagement</span></div>
+        <div class="step-desc"><span data-lang="es" class="active">Dedicación parcial con objetivos trimestrales acordados. Para compañías en fase de crecimiento activo que necesitan criterio senior de forma sostenida.</span><span data-lang="en">Part-time dedication with agreed quarterly objectives. For companies in active growth phase that need sustained senior judgment.</span></div>
+      </div>
+      <div class="step-desc" style="color: var(--text3); font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; padding-top: 4px;">
+        <span data-lang="es" class="active">Continuidad · Alineación de objetivos</span>
+        <span data-lang="en">Continuity · Aligned objectives</span>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-name"><span data-lang="es" class="active">Proyecto Específico</span><span data-lang="en">Specific Project</span></div>
+        <div class="step-desc"><span data-lang="es" class="active">Duración definida y estructura adaptada al evento concreto: ronda de financiación, proceso de M&A o exit. La compensación se alinea con el resultado.</span><span data-lang="en">Defined duration and structure adapted to the specific event: fundraising round, M&A process or exit. Compensation aligns with the outcome.</span></div>
+      </div>
+      <div class="step-desc" style="color: var(--text3); font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; padding-top: 4px;">
+        <span data-lang="es" class="active">Alineación de intereses · Orientado a resultado</span>
+        <span data-lang="en">Aligned interests · Outcome-oriented</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos">
+  <div class="reveal">
+    <div class="section-label">
+      <span data-lang="es" class="active">Recursos & Herramientas</span>
+      <span data-lang="en">Resources & Tools</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="es" class="active">Conocimiento <em>accionable</em>.</span>
+      <span data-lang="en"><em>Actionable</em> knowledge.</span>
+    </h2>
+    <p class="section-body">
+      <span data-lang="es" class="active">Guías, frameworks y herramientas para founders e inversores que quieren tomar mejores decisiones financieras y estratégicas.</span>
+      <span data-lang="en">Guides, frameworks and tools for founders and investors who want to make better financial and strategic decisions.</span>
+    </p>
+  </div>
+
+  <div class="resources-grid reveal">
+
+    <a href="#contacto" class="resource-card">
+      <div class="resource-badge">Próximamente</div>
+      <div class="resource-type">Guía · PDF</div>
+      <div class="resource-title">
+        <span data-lang="es" class="active">Exit Readiness Checklist: 18 meses antes del deal</span>
+        <span data-lang="en">Exit Readiness Checklist: 18 months before the deal</span>
+      </div>
+      <div class="resource-desc">
+        <span data-lang="es" class="active">Todo lo que una compañía tech debe tener en orden antes de iniciar un proceso de venta o ronda. Basado en decenas de due diligences reales.</span>
+        <span data-lang="en">Everything a tech company should have in order before starting a sale or fundraising process. Based on dozens of real due diligences.</span>
+      </div>
+      <div class="resource-cta">
+        <span data-lang="es" class="active">Notificarme cuando esté disponible</span>
+        <span data-lang="en">Notify me when available</span>
+      </div>
+    </a>
+
+    <a href="#contacto" class="resource-card">
+      <div class="resource-badge">Próximamente</div>
+      <div class="resource-type">Template · Excel</div>
+      <div class="resource-title">
+        <span data-lang="es" class="active">SaaS Metrics Dashboard: Del MRR al NRR</span>
+        <span data-lang="en">SaaS Metrics Dashboard: From MRR to NRR</span>
+      </div>
+      <div class="resource-desc">
+        <span data-lang="es" class="active">Modelo financiero para compañías SaaS con las métricas que realmente importan a inversores de Serie A y B. Plug & play.</span>
+        <span data-lang="en">Financial model for SaaS companies with the metrics that truly matter to Series A and B investors. Plug & play.</span>
+      </div>
+      <div class="resource-cta">
+        <span data-lang="es" class="active">Notificarme cuando esté disponible</span>
+        <span data-lang="en">Notify me when available</span>
+      </div>
+    </a>
+
+    <a href="#contacto" class="resource-card">
+      <div class="resource-badge">Próximamente</div>
+      <div class="resource-type">Guía · PDF</div>
+      <div class="resource-title">
+        <span data-lang="es" class="active">Fundraising en Europa: VC vs PE, lo que nadie te cuenta</span>
+        <span data-lang="en">Fundraising in Europe: VC vs PE, what nobody tells you</span>
+      </div>
+      <div class="resource-desc">
+        <span data-lang="es" class="active">Las diferencias reales entre levantar capital de un fondo de VC y de un fondo de PE — y cómo afectan a las decisiones que tomas hoy.</span>
+        <span data-lang="en">The real differences between raising capital from a VC fund and a PE fund — and how they affect the decisions you make today.</span>
+      </div>
+      <div class="resource-cta">
+        <span data-lang="es" class="active">Notificarme cuando esté disponible</span>
+        <span data-lang="en">Notify me when available</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contact-inner reveal">
+    <div>
+      <div class="section-label">
+        <span data-lang="es" class="active">Conversemos</span>
+        <span data-lang="en">Get in touch</span>
+      </div>
+      <h2 class="section-title">
+        <span data-lang="es" class="active">¿Estás en un <em>momento de inflexión</em>?</span>
+        <span data-lang="en">Are you at an <em>inflection point</em>?</span>
+      </h2>
+      <p class="section-body" style="margin-bottom: 48px;">
+        <span data-lang="es" class="active">Trabajamos con un número reducido de compañías y fondos a la vez. Si crees que hay encaje, nos gustaría saberlo.</span>
+        <span data-lang="en">We work with a small number of companies and funds at a time. If you think there's a fit, we'd like to hear from you.</span>
+      </p>
+
+      <div class="contact-info">
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#bed6dbd2d2d1fedfd3cbccdfcdcacbdad7d190ddd1d3"><span class="__cf_email__" data-cfemail="dab2bfb6b6b59abbb7afa8bba9aeafbeb3b5f4b9b5b7">[email&#160;protected]</span></a></div>
+        </div>
+        <div>
+          <div class="contact-item-label">
+            <span data-lang="es" class="active">Ubicación</span>
+            <span data-lang="en">Location</span>
+          </div>
+          <div class="contact-item-value">
+            <span data-lang="es" class="active">España · Europa</span>
+            <span data-lang="en">Spain · Europe</span>
+          </div>
+        </div>
+        <div>
+          <div class="contact-item-label">
+            <span data-lang="es" class="active">Idiomas</span>
+            <span data-lang="en">Languages</span>
+          </div>
+          <div class="contact-item-value">Español · English</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">
+          <span data-lang="es" class="active">Nombre</span>
+          <span data-lang="en">Name</span>
+        </label>
+        <input type="text" class="form-input" required placeholder="">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" required placeholder="">
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <span data-lang="es" class="active">Empresa / Fondo</span>
+          <span data-lang="en">Company / Fund</span>
+        </label>
+        <input type="text" class="form-input" placeholder="">
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <span data-lang="es" class="active">¿En qué podemos ayudarte?</span>
+          <span data-lang="en">How can we help?</span>
+        </label>
+        <select class="form-select">
+          <option value="" disabled selected>
+          </option>
+          <option value="cfo" data-es="CFO Estratégico Fractional" data-en="Fractional Strategic CFO">CFO Estratégico Fractional</option>
+          <option value="exit" data-es="Exit Readiness & M&A" data-en="Exit Readiness & M&A">Exit Readiness & M&A</option>
+          <option value="corpdev" data-es="Corporate Development" data-en="Corporate Development">Corporate Development</option>
+          <option value="deals" data-es="Deal Sourcing para Fondos" data-en="Deal Sourcing for Funds">Deal Sourcing para Fondos</option>
+          <option value="operating" data-es="Operating Partnership" data-en="Operating Partnership">Operating Partnership</option>
+          <option value="venture" data-es="Venture Building" data-en="Venture Building">Venture Building</option>
+          <option value="other" data-es="Otro" data-en="Other">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <span data-lang="es" class="active">Cuéntanos más (opcional)</span>
+          <span data-lang="en">Tell us more (optional)</span>
+        </label>
+        <textarea class="form-textarea"></textarea>
+      </div>
+      <button type="submit" class="form-submit">
+        <span data-lang="es" class="active">Enviar mensaje</span>
+        <span data-lang="en">Send message</span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Amura Studio · Financial Craft & Venture Building</div>
+  <ul class="footer-links">
+    <li><a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+    <li><a href="#recursos" data-es="Recursos" data-en="Resources">Recursos</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#39515c5555567958544c4b584a4d4c5d5056175a5654"><span class="__cf_email__" data-cfemail="93fbf6fffffcd3f2fee6e1f2e0e7e6f7fafcbdf0fcfe">[email&#160;protected]</span></a></li>
+  </ul>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── LANGUAGE SWITCHER ──
+  let currentLang = 'es';
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    // Update buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    });
+
+    // Update block elements
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
+    });
+
+    // Update inline nav links
+    document.querySelectorAll('[data-lang-inline]').forEach(el => {
+      if (el.dataset[lang]) el.textContent = el.dataset[lang];
+    });
+  }
+
+  // Init display
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.dataset.lang === 'es' ? '' : 'none';
+  });
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── FORM ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = currentLang === 'es' ? 'Mensaje enviado ✓' : 'Message sent ✓';
+    btn.style.background = '#2d7dd2';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      e.target.reset(
